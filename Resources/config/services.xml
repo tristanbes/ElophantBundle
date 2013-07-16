@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="tristanbes_elophant.elophant.class">Tristanbes\ElophantBundle\Api\Elophant</parameter>
+        <parameter key="tristanbes_elophant.guzzle.exception.class">Tristanbes\ElophantBundle\EventListener\GuzzleExceptionListener</parameter>
+        <parameter key="tristanbes_elophant.api.elophant.block">Tristanbes\ElophantBundle\Admin\ApiDashboardBlock</parameter>
+        <parameter key="tristanbes_elophant.stats_manager.class">Tristanbes\ElophantBundle\Manager\StatsManager</parameter>
+    </parameters>
+
+    <services>
+
+        <service id="gamercertified.api.elophant" class="%tristanbes_elophant.elophant.class%">
+            <argument type="service" id="tristanbes_elophant.stats.manager" />
+            <argument type="service" id="elophant.guzzle.client" />
+            <argument type="service" id="gamer_certified.cache" on-invalid="ignore" />
+            <argument>%tristanbes_elophant.api_key%</argument>
+            <call method="setTtl">
+                <argument>%tristanbes_elophant.cache_ttl%</argument>
+            </call>
+        </service>
+
+        <service id="elophant.guzzle.client" class="%guzzle.client.class%">
+            <tag name="guzzle.client"/>
+            <argument>%tristanbes_elophant.base_url%</argument>
+        </service>
+
+        <service id="tristanbes_elophant.guzzle_exception_eventlistener" class="%tristanbes_elophant.guzzle.exception.class%">
+            <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" />
+            <tag name="kernel.event_listener" event="kernel.terminate" method="onKernelTerminate" />
+            <argument type="service" id="tristanbes_elophant.stats.manager" />
+        </service>
+
+        <service id="tristanbes_elophant.stats.manager" class="%tristanbes_elophant.stats_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="sonata.block.service.api.elophant" class="%tristanbes_elophant.api.elophant.block%">
+            <tag name="sonata.block" />
+            <argument>sonata.block.service.api.elophant</argument>
+            <argument type="service" id="templating" />
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </call>
+            <call method="setMaxDisplayedDays">
+                <argument>%tristanbes_elophant.dashboard_max_days%</argument>
+            </call>
+
+        </service>
+
+    </services>
+
+</container>

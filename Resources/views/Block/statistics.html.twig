@@ -1,0 +1,71 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <h3 class="sonata-feed-title">{{ settings.title }}</h3>
+
+    <div id="chart">
+
+    </div>
+
+    {{ sonata_block_include_javascripts("screen") }}
+    {{ sonata_block_include_stylesheets("screen") }}
+
+    <script type="text/javascript">
+        $(function() {
+        $('#chart').highcharts({
+
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Total api calls made'
+            },
+
+            xAxis: {
+                categories: [
+                    {% for call in results|reverse %}
+                        "{{ call.date|date('Y-m-d') }}"{%if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            },
+
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: 'API calls'
+                }
+            },
+
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+
+                        this.series.name +': '+ this.y +'<br/>'+
+                        'Total: '+ this.point.stackTotal;
+                }
+            },
+
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+
+            series: [{
+                name: 'Success',
+                data: [{%- for call in results|reverse %}{{ call.success }}{% if not loop.last %},{% endif %}{% endfor -%}
+                ],
+            }, {
+                name: 'Errors',
+                data: [{%- for call in results|reverse %}{{ call.fail }}{% if not loop.last %},{% endif %}{% endfor -%}
+                ],
+            }, {
+                name: 'FromCache',
+                data: [{%- for call in results|reverse %}{{ call.fromCache }}{% if not loop.last %},{% endif %}{% endfor -%}
+                ],
+            }],
+        });
+    });
+
+    </script>
+{% endblock %}

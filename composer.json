@@ -1,0 +1,33 @@
+{
+    "name": "tristanbes/elophant-bundle",
+    "type": "symfony-bundle",
+    "description": "Easy manipulation for Elophant API in order to get league of legends statistics",
+    "license" : "MIT",
+    "keywords": ["Elophant", "league of legends", "LoL", "API"],
+    "authors": [
+        {
+            "name": "Tristan Bessoussa",
+            "email": "tristan.bessoussa@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Tristanbes\\ElophantBundle": "" }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "misd/guzzle-bundle": "~1.0",
+        "symfony/framework-bundle": "~2.1",
+        "snc/redis-bundle" : "1.1.*",
+    },
+    "require-dev": {
+        "predis/predis": "0.8.*@dev"
+    },
+
+    "target-dir": "Tristanbes/ElophantBundle",
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.0",
+        }
+    }
+}
