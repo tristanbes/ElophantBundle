@@ -16,11 +16,11 @@ Documentation
 
 For documentation, see:
 
-[`Resources/doc/index.rst`]()
+[`Resources/doc/index.rst`](https://github.com/tristanbes/ElophantBundle/blob/master/Resources/doc/index.rst)
 
 
 License
 ============
 
-[`Resources/meta/LICENSE`]()
+[`Resources/meta/LICENSE`](https://github.com/tristanbes/ElophantBundle/blob/master/Resources/meta/LICENSE)
 
