@@ -11,6 +11,8 @@ Add tristanbes/elophant-bundle to composer.json
         "tristanbes/elophant-bundle": "1.0.*",
         ...
     }
+    
+As the bundle will install for the cache mechanism snc/redis-bundle, make sure that you've correctly configured it. See the snc/redis-bundle [documentation](https://github.com/snc/SncRedisBundle/blob/master/Resources/doc/index.md)
 
 Add TristanbesElophantBundle to your application kernel
 -------------------------------------------------------
