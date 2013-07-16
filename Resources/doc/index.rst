@@ -1,14 +1,3 @@
-
-Features
-========
-
-This bundle allows to easily use the Elophant API in your Symfony2
-project by configuring it through your configuration.
-
-- **Visualization** - See how much request has succeded / failed per day
-- **Cache implementation** - Avoid reaching the global API request exceeded by caching the API response
-
-
 Installation
 ============
 
@@ -19,7 +8,7 @@ Add tristanbes/elophant-bundle to composer.json
 
     "require": {
         ...
-        "tristanbes/elophant-bundle": "master-dev",
+        "tristanbes/elophant-bundle": "1.0.*",
         ...
     }
 
