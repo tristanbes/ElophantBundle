@@ -17,7 +17,7 @@
         "php": ">=5.3.3",
         "misd/guzzle-bundle": "~1.0",
         "symfony/framework-bundle": "~2.1",
-        "snc/redis-bundle" : "1.1.*",
+        "snc/redis-bundle" : "1.1.*"
     },
     "require-dev": {
         "predis/predis": "0.8.*@dev"
