@@ -3,9 +3,6 @@
 namespace Tristanbes\ElophantBundle\Api;
 
 use Guzzle\Http\Client;
-use Guzzle\Http\Exception\CurlException;
-use Guzzle\Http\Exception\BadResponseException;
-
 use Tristanbes\ElophantBundle\Manager\StatsManager;
 
 class Elophant

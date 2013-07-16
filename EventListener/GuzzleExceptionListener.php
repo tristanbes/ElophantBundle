@@ -4,9 +4,7 @@ namespace Tristanbes\ElophantBundle\EventListener;
 
 use Guzzle\Http\Exception\BadResponseException;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
 use Tristanbes\ElophantBundle\Manager\StatsManager;
