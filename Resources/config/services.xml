@@ -16,10 +16,16 @@
         <service id="gamercertified.api.elophant" class="%tristanbes_elophant.elophant.class%">
             <argument type="service" id="tristanbes_elophant.stats.manager" />
             <argument type="service" id="elophant.guzzle.client" />
-            <argument type="service" id="gamer_certified.cache" on-invalid="ignore" />
+            <argument type="service" id="tristanbes_elophant.cache" on-invalid="ignore" />
             <argument>%tristanbes_elophant.api_key%</argument>
             <call method="setTtl">
                 <argument>%tristanbes_elophant.cache_ttl%</argument>
+            </call>
+        </service>
+
+        <service id="tristanbes_elophant.cache" class="Snc\RedisBundle\Doctrine\Cache\RedisCache">
+             <call method="setRedis">
+                <argument type="service" id="snc_redis.default" />
             </call>
         </service>
 
