@@ -5,7 +5,6 @@ namespace Tristanbes\ElophantBundle\EventListener;
 use Guzzle\Http\Exception\BadResponseException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
@@ -41,7 +40,7 @@ class GuzzleExceptionListener
         }
     }
 
-    public function onKernelTerminate(PostResponseEvent $event)
+    public function onKernelTerminate()
     {
         if ($this->fail == 0) {
             return;
