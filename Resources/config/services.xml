@@ -9,6 +9,7 @@
         <parameter key="tristanbes_elophant.guzzle.exception.class">Tristanbes\ElophantBundle\EventListener\GuzzleExceptionListener</parameter>
         <parameter key="tristanbes_elophant.api.elophant.block">Tristanbes\ElophantBundle\Admin\ApiDashboardBlock</parameter>
         <parameter key="tristanbes_elophant.stats_manager.class">Tristanbes\ElophantBundle\Manager\StatsManager</parameter>
+        <parameter key="snc_redis.doctrine.class">Snc\RedisBundle\Doctrine\Cache\RedisCache</parameter>
     </parameters>
 
     <services>
@@ -23,7 +24,7 @@
             </call>
         </service>
 
-        <service id="tristanbes_elophant.cache" class="Snc\RedisBundle\Doctrine\Cache\RedisCache">
+        <service id="tristanbes_elophant.cache" class="%snc_redis.doctrine.class%">
              <call method="setRedis">
                 <argument type="service" id="snc_redis.default" />
             </call>
