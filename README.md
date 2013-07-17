@@ -5,9 +5,9 @@ This bundle allows to easily use the Elophant API in your Symfony2
 project by configuring it through your configuration.
 
 - **Visualization** - See how much request has succeded / failed per day (requires SonataAdminBundle / Optionnal)
-- **Cache implementation** - Avoid reaching the global API request exceeded by caching the API response
+- **Cache implementation** - Avoid reaching the global API request exceeded by caching the API response. (Requires redis)
 
-Initially we used similar functionnality for [`Seek Team`](http://www.seek-team.com), so I decided to rewrork it a little and add extra functionality.
+Initially we used similar functionnality for [`Seek Team`](http://www.seek-team.com), so I decided to rework it a little and add extra functionality.
 
 
 ![Dashboard Example](Resources/doc/demo.png "Elophant API Bundle dashboard example")
