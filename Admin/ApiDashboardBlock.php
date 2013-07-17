@@ -97,7 +97,10 @@ class ApiDashboardBlock extends BaseBlockService
      */
     public function getJavascripts($media)
     {
-        return array('/js/highcharts.js', '/js/highcharts-more.js');
+        return array(
+            '/bundles/tristanbeselophant/js/highcharts.js',
+            '/bundles/tristanbeselophant/js/highcharts-more.js'
+        );
     }
 
     /**
